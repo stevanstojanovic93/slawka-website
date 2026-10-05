@@ -1,0 +1,8 @@
+.services { padding: 0 20px; scroll-margin-top: var(--nav-height); }
+.panel {
+  max-width: var(--max-width); margin: 0 auto; background: var(--sand); border-radius: 48px;
+  padding: clamp(40px, 6vw, 80px) clamp(24px, 5vw, 72px);
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
+  gap: clamp(32px, 5vw, 64px); align-items: center;
+}
+.sub { font-size: 18px; line-height: 1.6; max-width: 440px; text-wrap: pretty; }

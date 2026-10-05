@@ -1,0 +1,16 @@
+.footer { padding: 0 20px 20px; margin-top: auto; }
+.panel {
+  max-width: var(--max-width); margin: 0 auto; background: var(--olive); color: var(--cream); border-radius: 48px;
+  padding: 56px clamp(24px, 6vw, 88px);
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 32px;
+}
+.brand {
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+}
+.brand:hover { opacity: 0.8; transform: translateY(-3px); }
+.brand:focus-visible { border-radius: 16px; }
+.tag { font-size: 15px; font-weight: 500; letter-spacing: 0.08em; margin-top: 4px; }
+.links { display: flex; flex-direction: column; gap: 8px; font-size: 18px; font-weight: 500; font-style: normal; }
+.links a:hover { text-decoration: underline; }
+.copy { width: 100%; padding-top: 24px; border-top: 1px solid rgba(242, 233, 216, 0.3); font-size: 15px; font-weight: 500; }

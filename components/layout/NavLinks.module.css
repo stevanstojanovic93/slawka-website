@@ -1,0 +1,18 @@
+.links { display: flex; align-items: center; gap: 8px; }
+.link {
+  position: relative; padding: 10px 16px; border-radius: 999px; font-size: 16px; font-weight: 500;
+  transition: background-color 0.25s ease;
+}
+.link:hover { background: var(--hover); }
+.link[aria-current] { font-weight: 600; }
+.indicator {
+  position: absolute; left: 16px; right: 16px; bottom: 3px; height: 2px; border-radius: 2px;
+  background: var(--brown); transform-origin: left center; transform: scaleX(0);
+  transition: transform 0.35s var(--ease);
+}
+.link[aria-current] .indicator { transform: scaleX(1); }
+.cta { margin-left: 8px; padding: 12px 22px; font-size: 15px; letter-spacing: 0.02em; }
+
+@media (max-width: 699px) {
+  .links { display: none; }
+}

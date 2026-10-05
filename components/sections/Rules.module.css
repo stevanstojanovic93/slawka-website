@@ -1,0 +1,3 @@
+.rules { padding-bottom: 0; }
+.head { max-width: 760px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 16px; align-items: start; }

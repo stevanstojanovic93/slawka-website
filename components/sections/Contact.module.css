@@ -1,0 +1,5 @@
+.grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+  gap: clamp(40px, 6vw, 80px); align-items: stretch;
+}
+.left { display: flex; flex-direction: column; gap: 36px; justify-content: center; }

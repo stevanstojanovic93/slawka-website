@@ -1,0 +1,7 @@
+.card { border-radius: 28px; padding: 28px 28px 10px; display: flex; flex-direction: column; gap: 14px; }
+.head { display: flex; align-items: center; gap: 12px; }
+.title { font-family: var(--serif); font-weight: 600; font-size: 26px; line-height: 1.15; }
+.list { list-style: none; margin: 0; padding: 0; }
+.list li { display: flex; flex-direction: column; gap: 6px; padding: 18px 0; border-top: 1px solid var(--line); }
+.term { font-weight: 600; font-size: 17px; color: var(--brown); }
+.desc { font-size: 16px; line-height: 1.6; color: var(--brown-muted); text-wrap: pretty; }

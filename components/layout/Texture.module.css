@@ -1,0 +1,13 @@
+/* Contrast is pre-baked into texture.webp; hidden (and therefore not downloaded) on small screens. */
+.texture {
+  position: fixed; inset: 0; z-index: 5; pointer-events: none;
+  background-image: url("/images/texture.webp");
+  background-size: 1100px auto; background-repeat: no-repeat;
+  background-position: right -120px top -40px;
+  mix-blend-mode: multiply; opacity: 0.6;
+  mask-image: linear-gradient(to right, transparent calc(100% - 960px), #000 calc(100% - 600px)), linear-gradient(to bottom, #000 360px, transparent 660px);
+  mask-composite: intersect;
+}
+@media (max-width: 899px) {
+  .texture { display: none; }
+}

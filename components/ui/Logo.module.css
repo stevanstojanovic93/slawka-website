@@ -1,0 +1,11 @@
+.logo { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+.rule { width: 108px; height: 1.5px; background: currentColor; opacity: 0.6; }
+.word { font-family: var(--serif); font-weight: 600; font-size: 22px; letter-spacing: 0.22em; padding-left: 0.22em; line-height: 1; }
+.lg { gap: 10px; }
+.lg .rule { width: 280px; height: 2px; }
+.lg .word { font-size: 50px; }
+
+@media (max-width: 420px) {
+  .lg .rule { width: 220px; }
+  .lg .word { font-size: 40px; }
+}
