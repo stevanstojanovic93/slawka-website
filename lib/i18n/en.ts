@@ -33,7 +33,23 @@ export const en = {
     p1Before: "You train on a premium reformer from the world-renowned brand ",
     p1After:
       " — precise springs, a stable frame and a comfortable carriage make every movement controlled, safe and effective. All supporting equipment is chosen with the same care.",
-    p2: "The studio is part of the apartment where the instructor lives, so the atmosphere is warm, calm and personal — without the crowds and rush of a gym. Every session lasts 50 minutes and is tailored to you alone.",
+    features: [
+      {
+        icon: "award",
+        title: "Experience",
+        text: "Expert guidance and attention to proper technique in every movement.",
+      },
+      {
+        icon: "home",
+        title: "Comfort",
+        text: "A warm, calm space where you feel at ease from the very first minute — just like home.",
+      },
+      {
+        icon: "user",
+        title: "Personalization",
+        text: "One-on-one sessions tailored to your body, your goals and your pace of progress.",
+      },
+    ],
   },
   services: {
     label: "Services & pricing",

@@ -7,6 +7,7 @@ type SameLength<Tuple extends readonly unknown[], T> = { -readonly [K in keyof T
 /** One plan label per entry in PRICES, in the same order. */
 type Plans = SameLength<typeof PRICES, Plan>;
 
+export type Feature = { icon: IconName; title: string; text: string };
 export type RuleItem = { term?: string; text: string };
 export type RuleGroup = { icon: IconName; title: string; items: RuleItem[] };
 
@@ -24,7 +25,7 @@ export type Dictionary = {
   };
   nav: { about: string; services: string; rules: string; contact: string; cta: string };
   hero: { title: string; sub: string; cta: string; pricing: string; imageAlt: string };
-  about: { photoAlt: string; title: string; p1Before: string; p1After: string; p2: string };
+  about: { photoAlt: string; title: string; p1Before: string; p1After: string; features: Feature[] };
   services: {
     label: string;
     title: string;

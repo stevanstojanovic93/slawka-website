@@ -2,7 +2,7 @@ import type { Dictionary } from "./types";
 
 export const sr = {
   meta: {
-    title: "SLAWKA — Pilates & Movement Studio · Kragujevac",
+    title: "Pilates reformer Kragujevac — individualni treninzi | SLAWKA",
     description:
       "Individualni trening na pilates reformeru u Kragujevcu. Align Pilates reformer, časovi od 50 minuta, besplatan probni trening.",
     ogTitle: "SLAWKA — Pilates & Movement Studio",
@@ -33,7 +33,23 @@ export const sr = {
     p1Before: "Trenirate na vrhunskom reformeru svetski poznate i priznate marke ",
     p1After:
       " — precizne opruge, stabilna konstrukcija i udobna platforma omogućavaju kontrolisan, bezbedan i efikasan rad. Sva prateća oprema birana je sa istom pažnjom.",
-    p2: "Studio se nalazi u sklopu stana u kom trenerica živi, pa je atmosfera topla, mirna i lična — bez gužve i žurbe teretane. Svaki čas traje 50 minuta i prilagođen je samo vama.",
+    features: [
+      {
+        icon: "award",
+        title: "Iskustvo",
+        text: "Stručno vođenje i pažnja na pravilnu tehniku u svakom pokretu.",
+      },
+      {
+        icon: "home",
+        title: "Udobnost",
+        text: "Topao i miran prostor u kome se opuštate od prvog minuta — kao kod kuće.",
+      },
+      {
+        icon: "user",
+        title: "Personalizacija",
+        text: "Individualni časovi prilagođeni vašem telu, ciljevima i tempu napretka.",
+      },
+    ],
   },
   services: {
     label: "Usluge i cenovnik",

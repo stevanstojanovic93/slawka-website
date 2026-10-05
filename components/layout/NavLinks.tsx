@@ -6,52 +6,37 @@ import { SECTIONS, type Dictionary, type SectionKey } from "@/lib/i18n";
 import { BOOKING_HREF } from "@/lib/site";
 import styles from "./NavLinks.module.css";
 
-/** Distance from the viewport top (below the sticky header) that decides which section is "current". */
-const SPY_LINE = 120;
+/** A section is "current" once its top has scrolled above this fraction of the viewport height. */
+const SPY_RATIO = 0.4;
 
 function useActiveSection(): SectionKey | null {
   const [active, setActive] = useState<SectionKey | null>(null);
 
   useEffect(() => {
-    const visible = new Set<SectionKey>();
+    let frame = 0;
     const update = () => {
+      frame = 0;
       const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
-      // Last matching section in document order wins; the final section wins at page bottom.
-      const current = atBottom ? SECTIONS.at(-1)!.key : SECTIONS.findLast((s) => visible.has(s.key))?.key;
-      setActive(current ?? null);
+      if (atBottom) return setActive(SECTIONS.at(-1)!.key);
+      const line = window.innerHeight * SPY_RATIO;
+      // Last section in document order whose top is above the line wins.
+      const current = SECTIONS.findLast((s) => {
+        const top = document.getElementById(s.id)?.getBoundingClientRect().top;
+        return top !== undefined && top <= line;
+      });
+      setActive(current?.key ?? null);
+    };
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(update);
     };
 
-    // Observe a 1px band at SPY_LINE: a section is "visible" while it crosses that line.
-    // The band depends on viewport height, so the observer is rebuilt on resize.
-    let io: IntersectionObserver | undefined;
-    const observe = () => {
-      io?.disconnect();
-      visible.clear();
-      io = new IntersectionObserver(
-        (entries) => {
-          for (const e of entries) {
-            const key = SECTIONS.find((s) => s.id === e.target.id)?.key;
-            if (!key) continue;
-            if (e.isIntersecting) visible.add(key);
-            else visible.delete(key);
-          }
-          update();
-        },
-        { rootMargin: `-${SPY_LINE}px 0px -${Math.max(0, window.innerHeight - SPY_LINE - 1)}px 0px` }
-      );
-      for (const s of SECTIONS) {
-        const el = document.getElementById(s.id);
-        if (el) io.observe(el);
-      }
-    };
-
-    observe();
-    window.addEventListener("resize", observe);
-    window.addEventListener("scrollend", update);
+    update();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
     return () => {
-      io?.disconnect();
-      window.removeEventListener("resize", observe);
-      window.removeEventListener("scrollend", update);
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
     };
   }, []);
 
