@@ -1,0 +1,22 @@
+:root {
+  --cream: #f2e9d8;
+  --brown: #4a3524;
+  --brown-dark: #2f2117;
+  --brown-muted: #5c4531;
+  --olive: #61654b; /* 5:1 with cream (WCAG AA) */
+  --olive-dark: #2a2c20;
+  --sand: #c9b8a6;
+  --line: rgba(74, 53, 36, 0.14);
+  --line-strong: rgba(74, 53, 36, 0.15);
+  --hover: rgba(74, 53, 36, 0.08);
+  --shadow-lift: 0 18px 40px rgba(50, 54, 40, 0.22);
+
+  /* --font-serif / --font-sans are injected by next/font in app/[lang]/layout.tsx */
+  --serif: var(--font-serif), Georgia, serif;
+  --sans: var(--font-sans), system-ui, sans-serif;
+
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --gutter: clamp(18px, 4vw, 28px);
+  --max-width: 1240px;
+  --nav-height: 80px;
+}

@@ -1,0 +1,42 @@
+import { Icon } from "@/components/ui/Icon";
+import { LOCALE_NAMES, LOCALES, localePath, type Lang } from "@/lib/i18n";
+import styles from "./LanguageSwitcher.module.css";
+
+const POPOVER_ID = "language-menu";
+
+/** Native popover: open/close, Escape and light-dismiss come from the browser, so no client JS is needed. */
+export function LanguageSwitcher({ lang, label }: { lang: Lang; label: string }) {
+  return (
+    <div className={styles.wrap}>
+      <button type="button" className={styles.button} popoverTarget={POPOVER_ID} aria-label={label}>
+        <Icon name="globe" size={18} />
+        <span aria-hidden="true">{lang.toUpperCase()}</span>
+      </button>
+      <div id={POPOVER_ID} popover="auto" className={styles.menu}>
+        <ul className={styles.list}>
+          {LOCALES.map((code) => (
+            <li key={code}>
+              <a
+                href={localePath(code)}
+                hrefLang={code}
+                lang={code}
+                aria-current={code === lang ? "page" : undefined}
+                className={styles.option}
+              >
+                <span className={styles.name}>
+                  <span className={styles.code} aria-hidden="true">
+                    {code.toUpperCase()}
+                  </span>
+                  {LOCALE_NAMES[code]}
+                </span>
+                <span className={styles.check} aria-hidden="true">
+                  ✓
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}

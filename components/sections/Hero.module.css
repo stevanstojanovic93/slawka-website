@@ -1,0 +1,48 @@
+.hero {
+  position: relative; min-height: calc(100svh - 78px);
+  display: flex; align-items: flex-end; overflow: hidden;
+  background: var(--olive-dark); color: var(--cream);
+}
+.media { position: absolute; inset: 0; }
+.img {
+  --hero-scale: 1;
+  object-fit: cover; object-position: 0% 100%;
+  transform: scale(var(--hero-scale)); transform-origin: 0% 92%;
+}
+.shade {
+  position: absolute; inset: 0;
+  background: linear-gradient(100deg, rgba(42, 44, 32, 0.88) 0%, rgba(42, 44, 32, 0.6) 40%, rgba(42, 44, 32, 0.1) 75%);
+}
+.copy {
+  position: relative; width: 100%; max-width: var(--max-width); margin: 0 auto;
+  padding: clamp(48px, 8vw, 112px) 28px; display: flex; flex-direction: column; gap: 32px;
+}
+.title {
+  font-family: var(--serif); font-weight: 500; font-size: clamp(48px, 7vw, 104px);
+  line-height: 1; letter-spacing: 0.02em; max-width: 760px; text-wrap: balance;
+}
+.sub { font-size: clamp(19px, 1.6vw, 22px); font-weight: 500; line-height: 1.55; max-width: 460px; text-wrap: pretty; }
+.actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+@media (max-width: 759px) {
+  .img { --hero-scale: 1.1; object-position: 12% 100%; transform-origin: 0% 100%; }
+  .shade {
+    background: linear-gradient(to top, rgba(42, 44, 32, 0.94) 0%, rgba(42, 44, 32, 0.72) 45%, rgba(42, 44, 32, 0.15) 85%);
+  }
+}
+
+/* entrance animation */
+@keyframes img-in {
+  from { transform: scale(calc(var(--hero-scale) * 1.08)); opacity: 0.4; }
+}
+@keyframes copy-in {
+  from { opacity: 0; transform: translateY(28px); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .img { animation: img-in 2.2s var(--ease) backwards; }
+  .copy > * { animation: copy-in 0.9s var(--ease) backwards; }
+  .copy > :nth-child(1) { animation-delay: 250ms; }
+  .copy > :nth-child(2) { animation-delay: 370ms; }
+  .copy > :nth-child(3) { animation-delay: 490ms; }
+  .copy > :nth-child(4) { animation-delay: 610ms; }
+}

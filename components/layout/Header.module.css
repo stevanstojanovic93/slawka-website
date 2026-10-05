@@ -1,0 +1,12 @@
+.header {
+  position: sticky; top: 0; z-index: 10;
+  background: rgba(242, 233, 216, 0.9);
+  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(74, 53, 36, 0.12);
+}
+.inner {
+  max-width: var(--max-width); margin: 0 auto; padding: 18px var(--gutter);
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.brand { display: block; }
+.right { display: flex; align-items: center; gap: 6px; }
