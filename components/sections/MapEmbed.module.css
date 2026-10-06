@@ -1,20 +1,20 @@
-.map { min-height: 440px; border-radius: 36px; overflow: hidden; background: var(--sand); display: flex; }
+.map { min-height: clamp(340px, 70vw, 440px); border-radius: clamp(28px, 6vw, 36px); overflow: hidden; background: var(--panel); display: flex; }
 .frame {
-  flex: 1; width: 100%; min-height: 440px; border: 0; display: block;
+  flex: 1; width: 100%; min-height: clamp(340px, 70vw, 440px); border: 0; display: block;
   filter: grayscale(0.6) sepia(0.25) contrast(0.95);
 }
 .facade {
   flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px;
   padding: 32px; text-align: center;
   background:
-    repeating-linear-gradient(0deg, rgba(74, 53, 36, 0.06) 0 1px, transparent 1px 48px),
-    repeating-linear-gradient(90deg, rgba(74, 53, 36, 0.06) 0 1px, transparent 1px 48px),
-    var(--sand);
+    repeating-linear-gradient(0deg, var(--hover) 0 1px, transparent 1px 48px),
+    repeating-linear-gradient(90deg, var(--hover) 0 1px, transparent 1px 48px),
+    var(--panel);
 }
 .pin {
   width: 64px; height: 64px; border-radius: 999px; display: flex; align-items: center; justify-content: center;
-  background: var(--brown); color: var(--cream); box-shadow: var(--shadow-lift);
+  background: var(--inverse); color: var(--on-inverse); box-shadow: var(--shadow-lift);
 }
-.address { font-family: var(--serif); font-weight: 600; font-size: 28px; line-height: 1.15; }
+.address { font-family: var(--serif); font-weight: 600; font-size: clamp(24px, 1vw + 20px, 28px); text-wrap: balance; line-height: 1.15; }
 .actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
-.notice { font-size: 14px; color: var(--brown-dark); max-width: 320px; }
+.notice { font-size: 14px; color: var(--text-strong); max-width: 320px; }

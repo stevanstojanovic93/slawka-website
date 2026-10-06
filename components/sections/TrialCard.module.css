@@ -1,7 +1,7 @@
 .trial {
-  background: var(--olive); color: var(--cream); border-radius: 28px; padding: 28px;
+  background: var(--olive); color: var(--cream); border-radius: 28px; padding: var(--card-pad);
   display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
 }
-.title { font-family: var(--serif); font-weight: 600; font-size: 30px; line-height: 1.1; }
+.title { font-family: var(--serif); font-weight: 600; font-size: clamp(26px, 1vw + 22px, 30px); line-height: 1.1; }
 .sub { font-size: 17px; font-weight: 500; }
 .actions { display: flex; gap: 10px; flex-wrap: wrap; }

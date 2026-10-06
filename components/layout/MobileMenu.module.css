@@ -1,19 +1,19 @@
 .burger, .close {
   width: 44px; height: 44px; border: 0; border-radius: 999px;
-  background: var(--brown); color: var(--cream); cursor: pointer;
+  background: var(--inverse); color: var(--on-inverse); cursor: pointer;
 }
 .burger { display: none; flex-direction: column; align-items: center; justify-content: center; gap: 5px; }
 .burger span { width: 18px; height: 2px; border-radius: 2px; background: currentColor; }
 .close { font-size: 22px; line-height: 1; }
 
-@media (max-width: 699px) {
+@media (max-width: 959px) {
   .burger { display: flex; }
 }
 
 .dialog {
   /* reset UA dialog box to full screen */
   width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; border: 0;
-  background: var(--cream); color: var(--brown);
+  background: var(--bg); color: var(--text);
   padding: 18px var(--gutter) 32px; overflow-y: auto;
   opacity: 0; transform: translateY(-12px);
   transition: opacity 0.35s var(--ease), transform 0.35s var(--ease), overlay 0.35s allow-discrete, display 0.35s allow-discrete;
@@ -34,4 +34,4 @@
 .links a:focus-visible { border-radius: 8px; }
 .arrow { font-family: var(--sans); font-size: 18px; opacity: 0.5; }
 .foot { margin-top: auto; padding-top: 40px; display: flex; flex-direction: column; gap: 20px; }
-.contact { display: flex; flex-direction: column; gap: 6px; font-size: 16px; color: var(--brown-muted); }
+.contact { display: flex; flex-direction: column; gap: 6px; font-size: 16px; color: var(--text-muted); }

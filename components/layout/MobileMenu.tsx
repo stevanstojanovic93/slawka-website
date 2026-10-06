@@ -8,7 +8,7 @@ import { SECTIONS, type Dictionary } from "@/lib/i18n";
 import { CONTACT } from "@/lib/site";
 import styles from "./MobileMenu.module.css";
 
-const DESKTOP_QUERY = "(min-width: 700px)";
+const DESKTOP_QUERY = "(min-width: 960px)";
 
 /**
  * Full-screen mobile menu built on the native <dialog>: showModal() gives focus trapping,

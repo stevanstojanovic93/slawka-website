@@ -3,6 +3,7 @@ import type { Dictionary, Lang } from "@/lib/i18n";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { MobileMenu } from "./MobileMenu";
 import { NavLinks } from "./NavLinks";
+import { ThemeToggle } from "./ThemeToggle";
 import styles from "./Header.module.css";
 
 export function Header({ lang, t }: { lang: Lang; t: Dictionary }) {
@@ -14,6 +15,7 @@ export function Header({ lang, t }: { lang: Lang; t: Dictionary }) {
         </a>
         <div className={styles.right}>
           <NavLinks nav={t.nav} label={t.a11y.mainNav} />
+          <ThemeToggle label={t.a11y.darkMode} />
           <LanguageSwitcher lang={lang} label={t.a11y.chooseLanguage} />
           <MobileMenu t={t} />
         </div>

@@ -1,8 +1,8 @@
 .header {
   position: sticky; top: 0; z-index: 10;
-  background: rgba(242, 233, 216, 0.9);
+  background: var(--header-bg);
   backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(74, 53, 36, 0.12);
+  border-bottom: 1px solid var(--line);
 }
 .inner {
   max-width: var(--max-width); margin: 0 auto; padding: 18px var(--gutter);

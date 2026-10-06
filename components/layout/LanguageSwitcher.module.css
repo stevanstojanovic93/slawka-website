@@ -2,7 +2,7 @@
 .button {
   anchor-name: --language-button;
   display: flex; align-items: center; gap: 6px; height: 44px; padding: 0 12px;
-  border: 0; border-radius: 999px; background: transparent; color: var(--brown);
+  border: 0; border-radius: 999px; background: transparent; color: var(--text);
   font-family: var(--sans); font-size: 14px; font-weight: 600; letter-spacing: 0.06em; cursor: pointer;
   transition: background-color 0.25s ease;
 }
@@ -10,9 +10,9 @@
 
 .menu {
   /* reset UA popover styles */
-  margin: 0; border: 0; color: var(--brown);
-  min-width: 190px; padding: 6px; border-radius: 18px; background: var(--cream);
-  box-shadow: 0 18px 40px rgba(50, 54, 40, 0.22), inset 0 0 0 1px rgba(74, 53, 36, 0.1);
+  margin: 0; border: 0; color: var(--text);
+  min-width: 190px; padding: 6px; border-radius: 18px; background: var(--surface);
+  box-shadow: var(--shadow-lift), inset 0 0 0 1px var(--line);
   /* fallback position: under the header, right-aligned */
   inset: 72px var(--gutter) auto auto;
 }
@@ -30,7 +30,7 @@
   border-radius: 12px; font-size: 15px; font-weight: 500;
   transition: background-color 0.25s ease;
 }
-.option:hover { background: rgba(97, 101, 75, 0.16); }
+.option:hover { background: var(--bubble); }
 .option:focus-visible { border-radius: 12px; outline-offset: -2px; }
 .name { display: flex; align-items: center; gap: 10px; }
 .code { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; opacity: 0.6; width: 22px; }

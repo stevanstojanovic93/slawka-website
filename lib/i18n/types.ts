@@ -21,6 +21,7 @@ export type Dictionary = {
     openMenu: string;
     closeMenu: string;
     chooseLanguage: string;
+    darkMode: string;
     home: string;
     backToTop: string;
   };
@@ -38,7 +39,8 @@ export type Dictionary = {
     currency: string;
     plans: Plans;
   };
-  quotes: { label: string; author: string; role: string; imageAlt: string; items: Quote[] };
+  /** items[0] is shown as the featured quote. */
+  quotes: { label: string; author: string; role: string; imageAlt: string; items: [Quote, ...Quote[]] };
   rules: { title: string; intro: string; groups: RuleGroup[] };
   contact: {
     title: string;

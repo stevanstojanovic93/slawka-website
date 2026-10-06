@@ -1,15 +1,19 @@
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: var(--nav-height); }
+/*
+ * overflow-x on html too: otherwise the body's value is moved to the viewport, where mobile browsers
+ * ignore it, and off-screen reveal offsets widen the page. With both set, the body really clips.
+ */
+html { scroll-behavior: smooth; scroll-padding-top: var(--nav-height); overflow-x: clip; }
 html:has(dialog[open]) { overflow: hidden; }
 body {
   margin: 0;
-  background: var(--cream);
-  color: var(--brown);
+  background: var(--bg);
+  color: var(--text);
   font-family: var(--sans);
   font-size: 15px;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
-  overflow-x: clip; /* side-sliding reveals must not cause horizontal scroll */
+  overflow-x: clip; /* side-sliding reveals must not cause horizontal scroll (see html above) */
 }
 h1, h2, h3, p { margin: 0; }
 a { color: inherit; text-decoration: none; }
@@ -37,8 +41,8 @@ img { display: block; max-width: 100%; }
  */
 @media (prefers-reduced-motion: no-preference) {
   .js [data-reveal] {
-    transition: opacity 0.9s var(--ease), transform 1.1s var(--ease), clip-path 1.1s var(--ease);
-    transition-delay: calc(var(--i, 0) * 130ms);
+    transition: opacity 0.6s var(--ease), transform 0.75s var(--ease), clip-path 0.75s var(--ease);
+    transition-delay: calc(var(--i, 0) * 90ms);
   }
   .js [data-reveal]:not([data-revealed]) { opacity: 0; transform: translateY(56px); }
   .js [data-reveal="fade"]:not([data-revealed]) { transform: none; }

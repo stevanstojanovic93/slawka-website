@@ -1,4 +1,12 @@
 :root {
+  /*
+   * Follows the OS setting by default; an explicit choice (components/layout/ThemeToggle, saved in
+   * localStorage) pins it via data-theme. Theme-aware tokens below use light-dark(), so they switch
+   * with color-scheme and still follow the OS preference when JavaScript is off.
+   */
+  color-scheme: light dark;
+
+  /* Brand palette: fixed in both themes (used as-is by the always-dark sections). */
   --cream: #f2e9d8;
   --brown: #4a3524;
   --brown-dark: #2f2117;
@@ -6,10 +14,27 @@
   --olive: #61654b; /* 5:1 with cream (WCAG AA) */
   --olive-dark: #2a2c20;
   --sand: #c9b8a6;
-  --line: rgba(74, 53, 36, 0.14);
-  --line-strong: rgba(74, 53, 36, 0.15);
-  --hover: rgba(74, 53, 36, 0.08);
-  --shadow-lift: 0 18px 40px rgba(50, 54, 40, 0.22);
+
+  /* Theme-aware: light-dark(<light>, <dark>). */
+  --bg: light-dark(var(--cream), #1c1d16);
+  --surface: light-dark(var(--cream), #26271e); /* price list, popovers */
+  --panel: light-dark(var(--sand), #34352a); /* services panel, map */
+  --placeholder: light-dark(#e6d9c4, #2e2f25);
+  --text: light-dark(var(--brown), #ece3d2);
+  --text-muted: light-dark(var(--brown-muted), #c2b6a3);
+  --text-strong: light-dark(var(--brown-dark), #f6efe2);
+  --accent: light-dark(var(--olive), #a9ae86); /* decorative marks */
+  --inverse: light-dark(var(--brown), var(--cream)); /* filled buttons */
+  --inverse-hover: light-dark(var(--brown-dark), #fff);
+  --on-inverse: light-dark(var(--cream), var(--brown-dark));
+  --header-bg: light-dark(rgba(242, 233, 216, 0.9), rgba(28, 29, 22, 0.88));
+  --glass: light-dark(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.04));
+  --bubble: light-dark(rgba(97, 101, 75, 0.18), rgba(169, 174, 134, 0.22));
+  --line: light-dark(rgba(74, 53, 36, 0.14), rgba(242, 233, 216, 0.14));
+  --line-strong: light-dark(rgba(74, 53, 36, 0.15), rgba(242, 233, 216, 0.18));
+  --hover: light-dark(rgba(74, 53, 36, 0.08), rgba(242, 233, 216, 0.08));
+  --shadow-color: light-dark(rgba(50, 54, 40, 0.22), rgba(0, 0, 0, 0.5));
+  --shadow-lift: 0 18px 40px var(--shadow-color);
 
   /* --font-serif / --font-sans are injected by next/font in app/[lang]/layout.tsx */
   --serif: var(--font-serif), Georgia, serif;
@@ -19,4 +44,15 @@
   --gutter: clamp(18px, 4vw, 28px);
   --max-width: 1240px;
   --nav-height: 80px;
+
+  /* Spacing that tightens on phones so text keeps a comfortable measure. */
+  --section-y: clamp(56px, 10vw, 140px);
+  --panel-inset: clamp(10px, 3vw, 20px); /* gap between a full-width panel and the screen edge */
+  --panel-radius: clamp(32px, 7vw, 48px);
+  --panel-pad: clamp(40px, 6vw, 80px) clamp(22px, 5vw, 72px);
+  --card-pad: clamp(22px, 5vw, 28px);
+  --card-title: clamp(22px, 1vw + 18px, 26px);
 }
+
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; }

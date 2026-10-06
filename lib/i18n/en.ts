@@ -16,6 +16,7 @@ export const en = {
     openMenu: "Open menu",
     closeMenu: "Close menu",
     chooseLanguage: "Choose language",
+    darkMode: "Dark mode",
     home: "SLAWKA — home",
     backToTop: "Back to top",
   },
@@ -123,7 +124,7 @@ export const en = {
     label: "Words of the founder",
     author: "Joseph Pilates",
     role: "founder of the Pilates method",
-    imageAlt: "Silhouette of a woman exercising on a reformer",
+    imageAlt: "Joseph Pilates exercising on a reformer",
     items: [
       { text: "In 10 sessions you will feel the difference, in 20 you will see the difference, and in 30 you will have a whole new body." },
       { text: "Physical fitness is the first requisite of happiness." },

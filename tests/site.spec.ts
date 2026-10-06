@@ -68,3 +68,53 @@ test("mobile menu is a modal dialog with focus handling", async ({ page, isMobil
   await expect(dialog).toBeHidden();
   await expect(page).toHaveURL(/#kontakt$/);
 });
+
+test.describe("dark mode", () => {
+  test("toggle switches the theme and remembers it after reload", async ({ page }) => {
+    await page.emulateMedia({ colorScheme: "light" });
+    await page.goto("/en");
+    const html = page.locator("html");
+    const toggle = page.getByRole("button", { name: "Dark mode" });
+    await expect(html).toHaveAttribute("data-theme", "light");
+    await expect(toggle).toHaveAttribute("aria-pressed", "false");
+
+    await toggle.click();
+    await expect(html).toHaveAttribute("data-theme", "dark");
+    await expect(toggle).toHaveAttribute("aria-pressed", "true");
+    expect(await page.evaluate(() => localStorage.getItem("theme"))).toBe("dark");
+
+    await page.reload();
+    await expect(html).toHaveAttribute("data-theme", "dark");
+  });
+
+  test("follows the OS preference until a choice is saved", async ({ page }) => {
+    await page.emulateMedia({ colorScheme: "dark" });
+    await page.goto("/en");
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+  });
+
+  test("has no serious accessibility violations", async ({ page }) => {
+    await page.emulateMedia({ colorScheme: "dark" });
+    await page.goto("/en");
+    const { violations } = await new AxeBuilder({ page }).analyze();
+    const serious = violations.filter((v) => v.impact === "serious" || v.impact === "critical");
+    expect(serious.map((v) => `${v.id}: ${v.nodes.map((n) => n.target.join(" ")).join(", ")}`)).toEqual([]);
+  });
+});
+
+test("page is never wider than the viewport", async ({ page }) => {
+  await page.goto("/en");
+  // Scroll through so every reveal animation passes through its off-screen starting offset.
+  const widest = await page.evaluate(async () => {
+    let max = 0;
+    for (let y = 0; y < document.documentElement.scrollHeight; y += innerHeight / 2) {
+      scrollTo(0, y);
+      await new Promise((r) => setTimeout(r, 50));
+      max = Math.max(max, document.documentElement.scrollWidth);
+    }
+    return max;
+  });
+  expect(widest).toBeLessThanOrEqual(page.viewportSize()!.width);
+  // On phones an overflowing page widens the layout viewport instead of scrolling.
+  expect(await page.evaluate(() => innerWidth)).toBe(page.viewportSize()!.width);
+});

@@ -1,7 +1,7 @@
-.footer { padding: 0 20px 20px; margin-top: auto; }
+.footer { padding: 0 var(--panel-inset) var(--panel-inset); margin-top: auto; }
 .panel {
-  max-width: var(--max-width); margin: 0 auto; background: var(--olive); color: var(--cream); border-radius: 48px;
-  padding: 56px clamp(24px, 6vw, 88px);
+  max-width: var(--max-width); margin: 0 auto; background: var(--olive); color: var(--cream); border-radius: var(--panel-radius);
+  padding: clamp(40px, 6vw, 56px) clamp(22px, 6vw, 88px);
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 32px;
 }
 .brand {
@@ -13,4 +13,10 @@
 .tag { font-size: 15px; font-weight: 500; letter-spacing: 0.08em; margin-top: 4px; }
 .links { display: flex; flex-direction: column; gap: 8px; font-size: 18px; font-weight: 500; font-style: normal; }
 .links a:hover { text-decoration: underline; }
-.copy { width: 100%; padding-top: 24px; border-top: 1px solid rgba(242, 233, 216, 0.3); font-size: 15px; font-weight: 500; }
+.copy { width: 100%; padding-top: 24px; border-top: 1px solid rgba(242, 233, 216, 0.3); font-size: 15px; font-weight: 500; text-wrap: balance; }
+
+/* Stacked on small screens: centre everything instead of leaving it ragged on the left. */
+@media (max-width: 759px) {
+  .panel { flex-direction: column; justify-content: center; text-align: center; }
+  .links { align-items: center; }
+}

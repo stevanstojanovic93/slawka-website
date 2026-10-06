@@ -16,6 +16,7 @@ export const sr = {
     openMenu: "Otvori meni",
     closeMenu: "Zatvori meni",
     chooseLanguage: "Izaberi jezik",
+    darkMode: "Tamni režim",
     home: "SLAWKA — početna",
     backToTop: "Nazad na vrh",
   },
@@ -123,7 +124,7 @@ export const sr = {
     label: "Reči osnivača",
     author: "Joseph Pilates",
     role: "osnivač pilates metode",
-    imageAlt: "Silueta vežbačice na reformeru",
+    imageAlt: "Joseph Pilates vežba na reformeru",
     items: [
       { text: "Posle 10 treninga osetićete razliku, posle 20 ćete je videti, a posle 30 imaćete potpuno novo telo." },
       { text: "Fizička kondicija je prvi preduslov sreće." },

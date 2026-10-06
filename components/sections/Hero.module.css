@@ -15,16 +15,18 @@
 }
 .copy {
   position: relative; width: 100%; max-width: var(--max-width); margin: 0 auto;
-  padding: clamp(48px, 8vw, 112px) 28px; display: flex; flex-direction: column; gap: 32px;
+  padding: clamp(48px, 8vw, 112px) var(--gutter); display: flex; flex-direction: column; gap: 32px;
 }
 .title {
-  font-family: var(--serif); font-weight: 500; font-size: clamp(44px, 5.4vw, 84px);
+  font-family: var(--serif); font-weight: 500; font-size: clamp(36px, 3.4vw + 26px, 84px);
   line-height: 1.05; letter-spacing: 0.02em; max-width: 11.5em; text-wrap: balance;
 }
-.sub { font-size: clamp(19px, 1.6vw, 22px); font-weight: 500; line-height: 1.55; max-width: 720px; text-wrap: pretty; }
+.sub { font-size: clamp(17px, 0.4vw + 15.5px, 22px); font-weight: 500; line-height: 1.55; max-width: 720px; text-wrap: pretty; }
 .actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
 @media (max-width: 759px) {
+  /* Full-width, equally sized buttons instead of a ragged pair. */
+  .actions > * { width: 100%; }
   .img { --hero-scale: 1.1; object-position: 12% 100%; transform-origin: 0% 100%; }
   .shade {
     background: linear-gradient(to top, rgba(42, 44, 32, 0.94) 0%, rgba(42, 44, 32, 0.72) 45%, rgba(42, 44, 32, 0.15) 85%);

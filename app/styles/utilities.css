@@ -1,18 +1,18 @@
 /* Shared building blocks used across components. Component-specific styles live in *.module.css next to each component. */
 
 .container { max-width: var(--max-width); margin: 0 auto; }
-.section { padding: clamp(72px, 10vw, 140px) 28px; scroll-margin-top: var(--nav-height); }
+.section { padding: var(--section-y) var(--gutter); scroll-margin-top: var(--nav-height); }
 .stack-6, .stack-16, .stack-24, .stack-28, .stack-40 { display: flex; flex-direction: column; }
 .stack-6 { gap: 6px; } .stack-16 { gap: 16px; } .stack-24 { gap: 24px; } .stack-28 { gap: 28px; } .stack-40 { gap: 40px; }
 
 /* type */
-.eyebrow { font-size: 15px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; }
-.eyebrow.muted { color: var(--brown-muted); }
-.h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(38px, 4.4vw, 60px); line-height: 1.05; text-wrap: balance; }
-.h2-sm { font-size: clamp(34px, 4vw, 54px); line-height: 1.08; }
-.lead { font-size: 19px; line-height: 1.65; color: var(--brown-muted); max-width: 520px; text-wrap: pretty; }
-.lead strong { font-weight: 600; color: var(--brown); }
-.body-muted { font-size: 18px; line-height: 1.65; color: var(--brown-muted); text-wrap: pretty; }
+.eyebrow { font-size: clamp(13px, 0.3vw + 12px, 15px); font-weight: 600; letter-spacing: 0.16em; text-wrap: balance; text-transform: uppercase; }
+.eyebrow.muted { color: var(--text-muted); }
+.h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(31px, 2.7vw + 21px, 60px); line-height: 1.05; text-wrap: balance; }
+.h2-sm { font-size: clamp(29px, 2.4vw + 20px, 54px); line-height: 1.08; }
+.lead { font-size: clamp(17px, 0.4vw + 15.5px, 19px); line-height: 1.65; color: var(--text-muted); max-width: 520px; text-wrap: pretty; }
+.lead strong { font-weight: 600; color: var(--text); }
+.body-muted { font-size: clamp(16px, 0.4vw + 14.5px, 18px); line-height: 1.65; color: var(--text-muted); text-wrap: pretty; }
 
 /* buttons */
 .btn {
@@ -22,18 +22,18 @@
 }
 .btn-lg { padding: 16px 28px; font-size: 17px; }
 .btn-xl { padding: 18px 24px; font-size: 17px; text-align: center; }
-.btn-dark { background: var(--brown); color: var(--cream); }
-.btn-dark:hover { background: var(--brown-dark); }
+.btn-dark { background: var(--inverse); color: var(--on-inverse); }
+.btn-dark:hover { background: var(--inverse-hover); }
 .btn-light { background: var(--cream); color: var(--brown); }
 .btn-light:hover { background: #fff; }
 .btn-outline-light { background: transparent; box-shadow: inset 0 0 0 1.5px var(--cream); color: var(--cream); }
 .btn-outline-light:hover { background: rgba(242, 233, 216, 0.14); }
-.btn-outline-dark { background: transparent; box-shadow: inset 0 0 0 1.5px var(--brown); color: var(--brown); }
+.btn-outline-dark { background: transparent; box-shadow: inset 0 0 0 1.5px var(--text); color: var(--text); }
 .btn-outline-dark:hover { background: var(--hover); }
 
 /* surfaces */
-.glass-card { background: rgba(255, 255, 255, 0.55); box-shadow: inset 0 0 0 1px rgba(74, 53, 36, 0.1); }
+.glass-card { background: var(--glass); box-shadow: inset 0 0 0 1px var(--line); }
 .icon-bubble {
-  width: 44px; height: 44px; flex: 0 0 auto; border-radius: 999px; background: rgba(97, 101, 75, 0.18);
+  width: 44px; height: 44px; flex: 0 0 auto; border-radius: 999px; background: var(--bubble);
   display: flex; align-items: center; justify-content: center;
 }

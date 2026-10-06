@@ -19,7 +19,7 @@
   clip-path: circle(calc(var(--icon) / 2) at var(--origin) 50%);
   transition: clip-path 0.6s var(--ease);
 }
-.label { transition: color 0.35s ease; }
+.label { transition: color 0.35s ease; text-wrap: balance; }
 
 .icon {
   position: relative; flex: 0 0 auto; width: var(--icon); height: var(--icon); border-radius: 999px;
@@ -34,7 +34,7 @@
 .glyph { grid-area: 1 / 1; display: grid; place-items: center; transition: transform 0.45s var(--ease); }
 .glyphNext { transform: translate(-150%, 150%); }
 
-.dark { --fg: var(--brown); --on-fill: var(--cream); }
+.dark { --fg: var(--text); --on-fill: var(--bg); }
 .light { --fg: var(--cream); --on-fill: var(--brown); }
 
 .sm { --icon: 32px; --pad: 4px; gap: 10px; padding-inline-start: 18px; font-size: 15px; }

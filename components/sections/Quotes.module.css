@@ -1,33 +1,49 @@
-.quotes { padding: clamp(72px, 10vw, 140px) 20px; }
-.panel {
-  max-width: var(--max-width); margin: 0 auto; background: var(--olive-dark); color: var(--cream); border-radius: 48px;
-  padding: clamp(40px, 6vw, 80px) clamp(24px, 5vw, 72px);
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
-  gap: clamp(40px, 6vw, 88px); align-items: center;
+/* Open, unboxed layout on the page background: portrait + name beside a featured quote. */
+.quotes { padding-top: 0; } /* the contact section above already provides the gap */
+.inner {
+  border-block: 1px solid var(--line); padding-block: var(--section-y);
+  display: grid; grid-template-columns: minmax(200px, 300px) 1fr;
+  gap: clamp(40px, 7vw, 112px); align-items: start;
 }
 
-/* Photo collage: tall portrait with a smaller detail shot overlapping its corner. */
-.media { position: relative; padding-bottom: 56px; padding-right: 56px; }
-.photo { position: relative; aspect-ratio: 4 / 5; border-radius: 32px; overflow: hidden; background: #3a3c2e; }
-.badge {
-  position: absolute; right: 0; bottom: 0; width: 38%; aspect-ratio: 1; border-radius: 28px;
-  display: grid; place-items: center; background: var(--sand); color: var(--olive-dark);
-  font-family: var(--serif); font-size: clamp(96px, 12vw, 168px); line-height: 1; padding-top: 0.3em;
-  box-shadow: 0 0 0 8px var(--olive-dark), 0 24px 48px rgba(0, 0, 0, 0.35);
+.founder { display: flex; flex-direction: column; gap: 24px; }
+/* Arch-topped portrait, echoing a studio window. */
+.portrait {
+  position: relative; aspect-ratio: 3 / 4; overflow: hidden;
+  border-radius: 999px 999px 28px 28px; background: var(--placeholder);
 }
-.img { object-fit: cover; object-position: 50% 62%; }
-
-.list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
-.list li { padding: 26px 0; border-top: 1px solid rgba(242, 233, 216, 0.16); }
-.list li:last-child { border-bottom: 1px solid rgba(242, 233, 216, 0.16); }
-.quote { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: start; }
-.quote p {
-  font-family: var(--serif); font-weight: 500; font-size: clamp(22px, 2.1vw, 28px); line-height: 1.3; text-wrap: pretty;
+.img { object-fit: cover; object-position: 50% 62%; filter: sepia(0.25) contrast(0.95); }
+.name { font-family: var(--serif); font-weight: 500; font-size: clamp(28px, 1.2vw + 22px, 36px); line-height: 1.1; }
+.role {
+  font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-muted); text-wrap: balance;
 }
-.mark { font-family: var(--serif); font-size: 64px; line-height: 0.8; color: var(--sand); }
-.cite { font-size: 14px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sand); }
 
-@media (max-width: 520px) {
-  .media { padding-bottom: 40px; padding-right: 32px; }
-  .mark { font-size: 48px; }
+.featured { margin: 28px 0 0; }
+.mark {
+  display: block; height: 0.42em; margin-left: -0.04em;
+  font-family: var(--serif); font-size: clamp(96px, 8vw, 136px); line-height: 0.8; color: var(--accent);
+}
+.featured p {
+  font-family: var(--serif); font-style: italic; font-weight: 500;
+  font-size: clamp(28px, 2vw + 20px, 46px); line-height: 1.18; text-wrap: balance;
+}
+
+.list {
+  list-style: none; margin: clamp(40px, 5vw, 64px) 0 0; padding: 0;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 28px clamp(28px, 4vw, 56px);
+}
+.list li { padding-top: 22px; border-top: 1px solid var(--line); }
+.list blockquote { margin: 0; }
+.list p {
+  font-family: var(--serif); font-style: italic; font-weight: 500;
+  font-size: clamp(19px, 0.5vw + 16px, 23px); line-height: 1.35; color: var(--text-muted); text-wrap: pretty;
+}
+
+/* Phones and small tablets: smaller portrait with the name beside it, aligned to its foot. */
+@media (max-width: 759px) {
+  .inner { grid-template-columns: 1fr; }
+  .founder { flex-direction: row; align-items: flex-end; gap: 18px; }
+  .portrait { flex: none; width: min(176px, 48%); border-radius: 999px 999px 22px 22px; }
 }
