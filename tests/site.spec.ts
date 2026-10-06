@@ -2,8 +2,8 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
 const pages = [
-  { path: "/", lang: "sr", h1: "Individualni trening na pilates reformeru" },
-  { path: "/en", lang: "en", h1: "Private training on the Pilates reformer" },
+  { path: "/", lang: "sr", h1: "Pilates na reformeru u Kragujevcu" },
+  { path: "/en", lang: "en", h1: "Reformer Pilates in Kragujevac" },
 ];
 
 for (const p of pages) {
@@ -62,6 +62,19 @@ test("mobile menu is a modal dialog with focus handling", async ({ page, isMobil
   await expect(dialog).toBeHidden();
   await expect(burger).toBeFocused();
 
+  // The page behind the open menu can't be scrolled, and stays where it was after closing.
+  await page.evaluate(() => scrollTo({ top: 1200, behavior: "instant" }));
+  await burger.click();
+  const bodyTop = () => page.evaluate(() => document.body.getBoundingClientRect().top);
+  const lockedAt = await bodyTop();
+  expect(lockedAt).toBeLessThan(0);
+  await page.mouse.wheel(0, 800);
+  await page.waitForTimeout(300);
+  expect(await bodyTop()).toBe(lockedAt);
+  await page.keyboard.press("Escape");
+  await expect(dialog).toBeHidden();
+  await expect.poll(() => page.evaluate(() => scrollY)).toBe(-lockedAt);
+
   // Navigating from the menu closes it and lands on the section.
   await burger.click();
   await dialog.getByRole("link", { name: "Contact" }).click();
@@ -69,38 +82,6 @@ test("mobile menu is a modal dialog with focus handling", async ({ page, isMobil
   await expect(page).toHaveURL(/#kontakt$/);
 });
 
-test.describe("dark mode", () => {
-  test("toggle switches the theme and remembers it after reload", async ({ page }) => {
-    await page.emulateMedia({ colorScheme: "light" });
-    await page.goto("/en");
-    const html = page.locator("html");
-    const toggle = page.getByRole("button", { name: "Dark mode" });
-    await expect(html).toHaveAttribute("data-theme", "light");
-    await expect(toggle).toHaveAttribute("aria-pressed", "false");
-
-    await toggle.click();
-    await expect(html).toHaveAttribute("data-theme", "dark");
-    await expect(toggle).toHaveAttribute("aria-pressed", "true");
-    expect(await page.evaluate(() => localStorage.getItem("theme"))).toBe("dark");
-
-    await page.reload();
-    await expect(html).toHaveAttribute("data-theme", "dark");
-  });
-
-  test("follows the OS preference until a choice is saved", async ({ page }) => {
-    await page.emulateMedia({ colorScheme: "dark" });
-    await page.goto("/en");
-    await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
-  });
-
-  test("has no serious accessibility violations", async ({ page }) => {
-    await page.emulateMedia({ colorScheme: "dark" });
-    await page.goto("/en");
-    const { violations } = await new AxeBuilder({ page }).analyze();
-    const serious = violations.filter((v) => v.impact === "serious" || v.impact === "critical");
-    expect(serious.map((v) => `${v.id}: ${v.nodes.map((n) => n.target.join(" ")).join(", ")}`)).toEqual([]);
-  });
-});
 
 test("page is never wider than the viewport", async ({ page }) => {
   await page.goto("/en");

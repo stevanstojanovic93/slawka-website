@@ -11,8 +11,3 @@
 @media (max-width: 899px) {
   .texture { display: none; }
 }
-/* The multiply blend only darkens, so it has nothing to show on the dark theme. */
-:global(:root[data-theme="dark"]) .texture { display: none; }
-@media (prefers-color-scheme: dark) {
-  :global(:root:not([data-theme="light"])) .texture { display: none; }
-}

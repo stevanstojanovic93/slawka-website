@@ -2,12 +2,12 @@ import type { Dictionary } from "./types";
 
 export const en = {
   meta: {
-    title: "Private Pilates Reformer Studio in Kragujevac | SLAWKA",
+    title: "Pilates Kragujevac — individual reformer Pilates | SLAWKA",
     description:
-      "Private Pilates reformer training in Kragujevac. Align Pilates reformer, 50-minute sessions, free trial session.",
-    ogTitle: "SLAWKA — Pilates & Movement Studio",
+      "Pilates studio in Kragujevac: individual sessions on the Pilates reformer (Align Pilates), 50 minutes each. Book a free trial session.",
+    ogTitle: "SLAWKA — Pilates studio in Kragujevac",
     ogImageAlt: "SLAWKA Pilates & Movement Studio — reformer training in Kragujevac",
-    ogDescription: "Private Pilates reformer training · Kragujevac",
+    ogDescription: "Individual reformer Pilates · Kragujevac",
   },
   a11y: {
     skipToContent: "Skip to content",
@@ -16,17 +16,16 @@ export const en = {
     openMenu: "Open menu",
     closeMenu: "Close menu",
     chooseLanguage: "Choose language",
-    darkMode: "Dark mode",
     home: "SLAWKA — home",
     backToTop: "Back to top",
   },
   nav: { about: "About", services: "Services", rules: "Studio rules", contact: "Contact", cta: "Book a trial session" },
   hero: {
-    title: "Private training on the Pilates reformer",
-    sub: "Find balance and strength in sessions tailored to you.",
+    title: "Reformer Pilates in Kragujevac",
+    sub: "Individual sessions tailored to you — find balance and strength.",
     cta: "Book your free trial session",
     pricing: "Pricing",
-    imageAlt: "Exercise on a black reformer",
+    imageAlt: "Exercise on a Pilates reformer at SLAWKA studio",
   },
   about: {
     photoAlt: "The instructor and a reformer session",
@@ -54,7 +53,7 @@ export const en = {
   },
   services: {
     label: "Services & pricing",
-    title: "Private reformer training",
+    title: "Private reformer Pilates",
     sub: "Every session lasts 50 minutes and is entirely devoted to you.",
     trial: "Trial session",
     trialSub: "Free · first visit",
@@ -70,7 +69,7 @@ export const en = {
   rules: {
     title: "Studio etiquette and reformer guidelines",
     intro:
-      "Welcome to our Pilates studio! To ensure maximum safety, hygiene and a pleasant atmosphere for everyone, please follow these rules carefully:",
+      "Welcome to our Pilates studio in Kragujevac! To ensure maximum safety, hygiene and a pleasant atmosphere for everyone, please follow these rules carefully:",
     groups: [
       {
         icon: "clock",

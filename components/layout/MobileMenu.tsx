@@ -11,12 +11,41 @@ import styles from "./MobileMenu.module.css";
 const DESKTOP_QUERY = "(min-width: 960px)";
 
 /**
+ * Stops the page behind the open menu from scrolling. overflow:hidden on <html> (base.css) isn't
+ * enough on iOS Safari, so the body is pinned at the current position and put back on close.
+ */
+function lockScroll(): () => void {
+  const y = window.scrollY;
+  const { style } = document.body;
+  Object.assign(style, { position: "fixed", top: `-${y}px`, left: "0", right: "0" });
+  return () => {
+    Object.assign(style, { position: "", top: "", left: "", right: "" });
+    window.scrollTo({ top: y, behavior: "instant" });
+  };
+}
+
+/**
  * Full-screen mobile menu built on the native <dialog>: showModal() gives focus trapping,
  * Escape to close, an inert background and focus return to the burger for free.
  */
 export function MobileMenu({ t }: { t: Dictionary }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const close = () => dialogRef.current?.close();
+  const unlockRef = useRef<(() => void) | null>(null);
+
+  const open = () => {
+    unlockRef.current ??= lockScroll();
+    dialogRef.current?.showModal();
+  };
+  // Unlocks synchronously (the dialog's close event is async), so a menu link's own jump to its
+  // section happens after the page is back at its original position.
+  const unlock = () => {
+    unlockRef.current?.();
+    unlockRef.current = null;
+  };
+  const close = () => {
+    unlock();
+    dialogRef.current?.close();
+  };
 
   // Close if the viewport grows past the mobile breakpoint while open.
   useEffect(() => {
@@ -26,12 +55,22 @@ export function MobileMenu({ t }: { t: Dictionary }) {
     return () => mq.removeEventListener("change", onChange);
   }, []);
 
+  // Escape and the breakpoint close the dialog without going through close().
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    dialog?.addEventListener("close", unlock);
+    return () => {
+      dialog?.removeEventListener("close", unlock);
+      unlock();
+    };
+  }, []);
+
   return (
     <>
       <button
         type="button"
         className={styles.burger}
-        onClick={() => dialogRef.current?.showModal()}
+        onClick={open}
         aria-label={t.a11y.openMenu}
         aria-haspopup="dialog"
       >

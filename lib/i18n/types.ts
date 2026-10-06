@@ -21,7 +21,6 @@ export type Dictionary = {
     openMenu: string;
     closeMenu: string;
     chooseLanguage: string;
-    darkMode: string;
     home: string;
     backToTop: string;
   };

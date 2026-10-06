@@ -9,6 +9,8 @@ export function Hero({ t }: { t: Dictionary }) {
   return (
     <section id="top" className={styles.hero} aria-labelledby="hero-title">
       <div className={styles.media}>
+        {/* No placeholder="blur": its SVG blur filter, painted over the whole hero, blocks the main thread
+            for over a second on GPU-less devices (PageSpeed TBT). The olive hero background shows instead. */}
         <Image
           src={heroImage}
           alt={t.hero.imageAlt}
@@ -16,7 +18,6 @@ export function Hero({ t }: { t: Dictionary }) {
           priority
           sizes="100vw"
           quality={80}
-          placeholder="blur"
           className={styles.img}
         />
       </div>

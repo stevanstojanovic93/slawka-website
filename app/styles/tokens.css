@@ -1,12 +1,7 @@
 :root {
-  /*
-   * Follows the OS setting by default; an explicit choice (components/layout/ThemeToggle, saved in
-   * localStorage) pins it via data-theme. Theme-aware tokens below use light-dark(), so they switch
-   * with color-scheme and still follow the OS preference when JavaScript is off.
-   */
-  color-scheme: light dark;
+  color-scheme: light;
 
-  /* Brand palette: fixed in both themes (used as-is by the always-dark sections). */
+  /* Brand palette. */
   --cream: #f2e9d8;
   --brown: #4a3524;
   --brown-dark: #2f2117;
@@ -15,25 +10,25 @@
   --olive-dark: #2a2c20;
   --sand: #c9b8a6;
 
-  /* Theme-aware: light-dark(<light>, <dark>). */
-  --bg: light-dark(var(--cream), #1c1d16);
-  --surface: light-dark(var(--cream), #26271e); /* price list, popovers */
-  --panel: light-dark(var(--sand), #34352a); /* services panel, map */
-  --placeholder: light-dark(#e6d9c4, #2e2f25);
-  --text: light-dark(var(--brown), #ece3d2);
-  --text-muted: light-dark(var(--brown-muted), #c2b6a3);
-  --text-strong: light-dark(var(--brown-dark), #f6efe2);
-  --accent: light-dark(var(--olive), #a9ae86); /* decorative marks */
-  --inverse: light-dark(var(--brown), var(--cream)); /* filled buttons */
-  --inverse-hover: light-dark(var(--brown-dark), #fff);
-  --on-inverse: light-dark(var(--cream), var(--brown-dark));
-  --header-bg: light-dark(rgba(242, 233, 216, 0.9), rgba(28, 29, 22, 0.88));
-  --glass: light-dark(rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.04));
-  --bubble: light-dark(rgba(97, 101, 75, 0.18), rgba(169, 174, 134, 0.22));
-  --line: light-dark(rgba(74, 53, 36, 0.14), rgba(242, 233, 216, 0.14));
-  --line-strong: light-dark(rgba(74, 53, 36, 0.15), rgba(242, 233, 216, 0.18));
-  --hover: light-dark(rgba(74, 53, 36, 0.08), rgba(242, 233, 216, 0.08));
-  --shadow-color: light-dark(rgba(50, 54, 40, 0.22), rgba(0, 0, 0, 0.5));
+  /* Semantic roles, built from the palette. */
+  --bg: var(--cream);
+  --surface: var(--cream); /* price list, popovers */
+  --panel: var(--sand); /* services panel, map */
+  --placeholder: #e6d9c4;
+  --text: var(--brown);
+  --text-muted: var(--brown-muted);
+  --text-strong: var(--brown-dark);
+  --accent: var(--olive); /* decorative marks */
+  --inverse: var(--brown); /* filled buttons */
+  --inverse-hover: var(--brown-dark);
+  --on-inverse: var(--cream);
+  --header-bg: rgba(242, 233, 216, 0.9);
+  --glass: rgba(255, 255, 255, 0.55);
+  --bubble: rgba(97, 101, 75, 0.18);
+  --line: rgba(74, 53, 36, 0.14);
+  --line-strong: rgba(74, 53, 36, 0.15);
+  --hover: rgba(74, 53, 36, 0.08);
+  --shadow-color: rgba(50, 54, 40, 0.22);
   --shadow-lift: 0 18px 40px var(--shadow-color);
 
   /* --font-serif / --font-sans are injected by next/font in app/[lang]/layout.tsx */
@@ -53,6 +48,3 @@
   --card-pad: clamp(22px, 5vw, 28px);
   --card-title: clamp(22px, 1vw + 18px, 26px);
 }
-
-:root[data-theme="light"] { color-scheme: light; }
-:root[data-theme="dark"] { color-scheme: dark; }

@@ -6,7 +6,6 @@ import { SkipLink } from "@/components/layout/SkipLink";
 import { Texture } from "@/components/layout/Texture";
 import { DEFAULT_LOCALE, getDictionary, isLocale, LOCALES, localePath, OG_LOCALES } from "@/lib/i18n";
 import { BRAND, SITE_URL } from "@/lib/site";
-import { themeInitScript } from "@/lib/theme";
 import "../styles/tokens.css";
 import "../styles/base.css";
 import "../styles/utilities.css";
@@ -56,10 +55,7 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
 }
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#F2E9D8" },
-    { media: "(prefers-color-scheme: dark)", color: "#1C1D16" },
-  ],
+  themeColor: "#F2E9D8",
 };
 
 export default async function RootLayout({ children, params }: LayoutProps<"/[lang]">) {
@@ -68,11 +64,11 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
   const t = getDictionary(lang);
 
   return (
-    // suppressHydrationWarning: the inline script below sets the "js" class and data-theme before React hydrates.
+    // suppressHydrationWarning: the inline script below adds the "js" class before React hydrates.
     <html lang={lang} className={`${serif.variable} ${sans.variable}`} suppressHydrationWarning>
       <body>
-        {/* Runs before first paint so reveal-on-scroll content starts hidden and the saved theme applies without a flash. */}
-        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        {/* Runs before first paint so reveal-on-scroll content starts hidden instead of flashing. */}
+        <script dangerouslySetInnerHTML={{ __html: 'document.documentElement.classList.add("js")' }} />
         <SkipLink label={t.a11y.skipToContent} />
         <Texture />
         {children}

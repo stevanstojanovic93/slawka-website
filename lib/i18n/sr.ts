@@ -2,12 +2,12 @@ import type { Dictionary } from "./types";
 
 export const sr = {
   meta: {
-    title: "Pilates reformer Kragujevac — individualni treninzi | SLAWKA",
+    title: "Pilates Kragujevac — individualni pilates na reformeru | SLAWKA",
     description:
-      "Individualni trening na pilates reformeru u Kragujevcu. Align Pilates reformer, časovi od 50 minuta, besplatan probni trening.",
-    ogTitle: "SLAWKA — Pilates & Movement Studio",
+      "Pilates studio u Kragujevcu: individualni treninzi na pilates reformeru (Align Pilates), časovi od 50 minuta. Zakažite besplatan probni trening.",
+    ogTitle: "SLAWKA — pilates studio u Kragujevcu",
     ogImageAlt: "SLAWKA Pilates & Movement Studio — trening na reformeru u Kragujevcu",
-    ogDescription: "Individualni trening na pilates reformeru · Kragujevac",
+    ogDescription: "Individualni pilates na reformeru · Kragujevac",
   },
   a11y: {
     skipToContent: "Preskoči na sadržaj",
@@ -16,17 +16,16 @@ export const sr = {
     openMenu: "Otvori meni",
     closeMenu: "Zatvori meni",
     chooseLanguage: "Izaberi jezik",
-    darkMode: "Tamni režim",
     home: "SLAWKA — početna",
     backToTop: "Nazad na vrh",
   },
   nav: { about: "O nama", services: "Usluge", rules: "Pravilnik", contact: "Kontakt", cta: "Zakaži probni trening" },
   hero: {
-    title: "Individualni trening na pilates reformeru",
-    sub: "Pronađite balans i snagu u individualno prilagođenim časovima.",
+    title: "Pilates na reformeru u Kragujevcu",
+    sub: "Individualni treninzi prilagođeni vama — pronađite balans i snagu.",
     cta: "Zakažite besplatan probni trening",
     pricing: "Cenovnik",
-    imageAlt: "Vežba na crnom reformeru",
+    imageAlt: "Vežba na pilates reformeru u studiju SLAWKA",
   },
   about: {
     photoAlt: "Trenerica i čas na reformeru",
@@ -54,7 +53,7 @@ export const sr = {
   },
   services: {
     label: "Usluge i cenovnik",
-    title: "Individualni trening na reformeru",
+    title: "Individualni pilates na reformeru",
     sub: "Svaki čas traje 50 minuta i u potpunosti je posvećen vama.",
     trial: "Probni trening",
     trialSub: "Besplatno · prvi dolazak",
@@ -70,7 +69,7 @@ export const sr = {
   rules: {
     title: "Pravilnik ponašanja i korišćenja reformera",
     intro:
-      "Dobrodošli u naš pilates studio! Kako bismo osigurali maksimalnu bezbednost, higijenu i prijatnu atmosferu za sve vežbače, molimo vas da se striktno pridržavate sledećih pravila:",
+      "Dobrodošli u naš pilates studio u Kragujevcu! Kako bismo osigurali maksimalnu bezbednost, higijenu i prijatnu atmosferu za sve vežbače, molimo vas da se striktno pridržavate sledećih pravila:",
     groups: [
       {
         icon: "clock",
