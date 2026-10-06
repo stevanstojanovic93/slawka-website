@@ -4,6 +4,7 @@ import { Header } from "@/components/layout/Header";
 import { About } from "@/components/sections/About";
 import { Contact } from "@/components/sections/Contact";
 import { Hero } from "@/components/sections/Hero";
+import { Quotes } from "@/components/sections/Quotes";
 import { Rules } from "@/components/sections/Rules";
 import { Services } from "@/components/sections/Services";
 import { JsonLd } from "@/components/ui/JsonLd";
@@ -26,6 +27,7 @@ export default async function Page({ params }: PageProps<"/[lang]">) {
         <Services lang={lang} t={t} />
         <Rules t={t} />
         <Contact lang={lang} t={t} />
+        <Quotes t={t.quotes} />
       </main>
       <Footer t={t} />
     </div>

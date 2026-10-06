@@ -32,9 +32,9 @@ export const BUSINESS = {
   },
   /** Prices in RSD. Plan names/descriptions are translated in lib/i18n/{sr,en}.ts → services.plans. */
   prices: {
-    single: 2000,
+    single: 1800,
     eightSessions: 11000,
-    twelveSessions: 14000,
+    twelveSessions: 13500,
   },
   currency: "RSD",
 } as const;
@@ -58,6 +58,7 @@ export const CONTACT = {
   phone: BUSINESS.phone,
   phoneE164,
   phoneHref: `tel:${phoneE164}`,
+  whatsappHref: `https://wa.me/${phoneE164.replace("+", "")}`,
   instagram: `@${BUSINESS.instagram}`,
   instagramHref: `https://instagram.com/${BUSINESS.instagram}`,
   address: fullAddress,

@@ -1,19 +1,17 @@
-import { ExternalLink } from "@/components/ui/ExternalLink";
+import { BookButton } from "@/components/ui/BookButton";
 import type { Dictionary } from "@/lib/i18n";
-import { BOOKING_HREF, CONTACT } from "@/lib/site";
+import { CONTACT } from "@/lib/site";
 import styles from "./TrialCard.module.css";
 
 export function TrialCard({ t }: { t: Dictionary["services"] }) {
   return (
-    <div className={styles.trial}>
+    <div data-reveal="left" className={styles.trial}>
       <div className="stack-6">
         <h3 className={styles.title}>{t.trial}</h3>
         <p className={styles.sub}>{t.trialSub}</p>
       </div>
       <div className={styles.actions}>
-        <ExternalLink href={BOOKING_HREF} className="btn btn-light">
-          {t.book}
-        </ExternalLink>
+        <BookButton tone="light">{t.book}</BookButton>
         <a href={CONTACT.phoneHref} className="btn btn-outline-light">
           {t.call}
         </a>

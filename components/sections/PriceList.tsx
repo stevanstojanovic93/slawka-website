@@ -1,5 +1,6 @@
 import { formatPrice } from "@/lib/format";
 import type { Dictionary, Lang } from "@/lib/i18n";
+import { stagger } from "@/lib/reveal";
 import { PRICES } from "@/lib/site";
 import styles from "./PriceList.module.css";
 
@@ -10,7 +11,7 @@ export function PriceList({ lang, t }: { lang: Lang; t: Dictionary["services"] }
         const plan = t.plans[i];
         if (!plan) return null;
         return (
-          <li key={plan.title} className={styles.row}>
+          <li key={plan.title} data-reveal="right" style={stagger(i)} className={styles.row}>
             <div className="stack-6">
               <h3 className={styles.title}>{plan.title}</h3>
               <p className={styles.sub}>{plan.sub}</p>

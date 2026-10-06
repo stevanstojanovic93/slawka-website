@@ -18,10 +18,10 @@
   padding: clamp(48px, 8vw, 112px) 28px; display: flex; flex-direction: column; gap: 32px;
 }
 .title {
-  font-family: var(--serif); font-weight: 500; font-size: clamp(48px, 7vw, 104px);
-  line-height: 1; letter-spacing: 0.02em; max-width: 760px; text-wrap: balance;
+  font-family: var(--serif); font-weight: 500; font-size: clamp(44px, 5.4vw, 84px);
+  line-height: 1.05; letter-spacing: 0.02em; max-width: 11.5em; text-wrap: balance;
 }
-.sub { font-size: clamp(19px, 1.6vw, 22px); font-weight: 500; line-height: 1.55; max-width: 460px; text-wrap: pretty; }
+.sub { font-size: clamp(19px, 1.6vw, 22px); font-weight: 500; line-height: 1.55; max-width: 720px; text-wrap: pretty; }
 .actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
 @media (max-width: 759px) {

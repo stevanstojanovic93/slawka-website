@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { ExternalLink } from "@/components/ui/ExternalLink";
+import { BookButton } from "@/components/ui/BookButton";
 import type { Dictionary } from "@/lib/i18n";
-import { BOOKING_HREF, BRAND } from "@/lib/site";
+import { BRAND } from "@/lib/site";
 import heroImage from "@/public/images/hero.jpg";
 import styles from "./Hero.module.css";
 
@@ -30,9 +30,9 @@ export function Hero({ t }: { t: Dictionary }) {
         </h1>
         <p className={styles.sub}>{t.hero.sub}</p>
         <div className={styles.actions}>
-          <ExternalLink href={BOOKING_HREF} className="btn btn-light btn-lg">
+          <BookButton tone="light" size="lg">
             {t.hero.cta}
-          </ExternalLink>
+          </BookButton>
           <a href="#usluge" className="btn btn-outline-light btn-lg">
             {t.hero.pricing}
           </a>

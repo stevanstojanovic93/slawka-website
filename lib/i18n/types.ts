@@ -8,6 +8,7 @@ type SameLength<Tuple extends readonly unknown[], T> = { -readonly [K in keyof T
 type Plans = SameLength<typeof PRICES, Plan>;
 
 export type Feature = { icon: IconName; title: string; text: string };
+export type Quote = { text: string };
 export type RuleItem = { term?: string; text: string };
 export type RuleGroup = { icon: IconName; title: string; items: RuleItem[] };
 
@@ -37,10 +38,13 @@ export type Dictionary = {
     currency: string;
     plans: Plans;
   };
+  quotes: { label: string; author: string; role: string; imageAlt: string; items: Quote[] };
   rules: { title: string; intro: string; groups: RuleGroup[] };
   contact: {
     title: string;
     phone: string;
+    whatsapp: string;
+    whatsappMessage: string;
     address: string;
     hours: string;
     mapTitle: string;

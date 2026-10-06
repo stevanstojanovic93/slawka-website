@@ -1,6 +1,7 @@
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { formatOpeningHours } from "@/lib/format";
 import type { Dictionary, Lang } from "@/lib/i18n";
+import { stagger } from "@/lib/reveal";
 import { CONTACT } from "@/lib/site";
 import styles from "./ContactTiles.module.css";
 
@@ -9,6 +10,13 @@ type Tile = { href?: string; icon: IconName; label: string; value: string; exter
 export function ContactTiles({ lang, t }: { lang: Lang; t: Dictionary["contact"] }) {
   const tiles: Tile[] = [
     { href: CONTACT.phoneHref, icon: "phone", label: t.phone, value: CONTACT.phone, external: false },
+    {
+      href: `${CONTACT.whatsappHref}?text=${encodeURIComponent(t.whatsappMessage)}`,
+      icon: "whatsapp",
+      label: "WhatsApp",
+      value: t.whatsapp,
+      external: true,
+    },
     { href: CONTACT.instagramHref, icon: "instagram", label: "Instagram", value: CONTACT.instagram, external: true },
     { href: CONTACT.mapsHref, icon: "pin", label: t.address, value: CONTACT.address, external: true },
     { icon: "clock", label: t.hours, value: formatOpeningHours(lang) },
@@ -16,7 +24,7 @@ export function ContactTiles({ lang, t }: { lang: Lang; t: Dictionary["contact"]
 
   return (
     <ul className={styles.tiles}>
-      {tiles.map((tile) => {
+      {tiles.map((tile, i) => {
         const body = (
           <>
             <span className={styles.top}>
@@ -36,7 +44,7 @@ export function ContactTiles({ lang, t }: { lang: Lang; t: Dictionary["contact"]
           </>
         );
         return (
-          <li key={tile.label}>
+          <li key={tile.label} data-reveal="scale" style={stagger(i)}>
             {tile.href ? (
               <a
                 href={tile.href}

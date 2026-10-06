@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ExternalLink } from "@/components/ui/ExternalLink";
+import { BookButton } from "@/components/ui/BookButton";
 import { SECTIONS, type Dictionary, type SectionKey } from "@/lib/i18n";
-import { BOOKING_HREF } from "@/lib/site";
 import styles from "./NavLinks.module.css";
 
 /** A section is "current" once its top has scrolled above this fraction of the viewport height. */
@@ -59,9 +58,9 @@ export function NavLinks({ nav, label }: { nav: Dictionary["nav"]; label: string
           <span className={styles.indicator} />
         </a>
       ))}
-      <ExternalLink href={BOOKING_HREF} className={`btn btn-dark ${styles.cta}`}>
+      <BookButton tone="dark" size="sm" variant="compact" className={styles.cta}>
         {nav.cta}
-      </ExternalLink>
+      </BookButton>
     </nav>
   );
 }

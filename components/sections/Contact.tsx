@@ -6,12 +6,14 @@ import styles from "./Contact.module.css";
 
 export function Contact({ lang, t }: { lang: Lang; t: Dictionary }) {
   return (
-    <section id="kontakt" data-reveal="" className="section" aria-labelledby="contact-title">
+    <section id="kontakt" className="section" aria-labelledby="contact-title">
       <div className={`container ${styles.grid}`}>
         <div className={styles.left}>
           <div className="stack-16">
-            <p className="eyebrow muted">{t.nav.contact}</p>
-            <h2 id="contact-title" className="h2">
+            <p data-reveal="fade" className="eyebrow muted">
+              {t.nav.contact}
+            </p>
+            <h2 id="contact-title" data-reveal="clip" className="h2">
               {t.contact.title}
             </h2>
           </div>

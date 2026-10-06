@@ -119,9 +119,22 @@ export const sr = {
       },
     ],
   },
+  quotes: {
+    label: "Reči osnivača",
+    author: "Joseph Pilates",
+    role: "osnivač pilates metode",
+    imageAlt: "Silueta vežbačice na reformeru",
+    items: [
+      { text: "Posle 10 treninga osetićete razliku, posle 20 ćete je videti, a posle 30 imaćete potpuno novo telo." },
+      { text: "Fizička kondicija je prvi preduslov sreće." },
+      { text: "Ako vam je kičma ukočena u tridesetoj, stari ste. Ako je potpuno pokretna u šezdesetoj, mladi ste." },
+    ],
+  },
   contact: {
     title: "Vidimo se u studiju",
     phone: "Telefon",
+    whatsapp: "Pošaljite poruku",
+    whatsappMessage: "Zdravo! Zanima me probni trening.",
     address: "Adresa",
     hours: "Radno vreme",
     mapTitle: "Mapa — Durmitorska 24, Kragujevac",

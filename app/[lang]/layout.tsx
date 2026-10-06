@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Figtree } from "next/font/google";
 import { notFound } from "next/navigation";
+import { RevealObserver } from "@/components/layout/RevealObserver";
 import { SkipLink } from "@/components/layout/SkipLink";
 import { Texture } from "@/components/layout/Texture";
 import { DEFAULT_LOCALE, getDictionary, isLocale, LOCALES, localePath, OG_LOCALES } from "@/lib/i18n";
@@ -62,11 +63,15 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
   const t = getDictionary(lang);
 
   return (
-    <html lang={lang} className={`${serif.variable} ${sans.variable}`}>
+    // suppressHydrationWarning: the inline script below adds the "js" class before React hydrates.
+    <html lang={lang} className={`${serif.variable} ${sans.variable}`} suppressHydrationWarning>
       <body>
+        {/* Runs before first paint so reveal-on-scroll content starts hidden instead of flashing. */}
+        <script dangerouslySetInnerHTML={{ __html: 'document.documentElement.classList.add("js")' }} />
         <SkipLink label={t.a11y.skipToContent} />
         <Texture />
         {children}
+        <RevealObserver />
       </body>
     </html>
   );

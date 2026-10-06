@@ -1,10 +1,11 @@
 import { Icon } from "@/components/ui/Icon";
 import type { RuleGroup } from "@/lib/i18n/types";
+import { stagger } from "@/lib/reveal";
 import styles from "./RuleCard.module.css";
 
-export function RuleCard({ group }: { group: RuleGroup }) {
+export function RuleCard({ group, index }: { group: RuleGroup; index: number }) {
   return (
-    <article className={`glass-card ${styles.card}`}>
+    <article data-reveal="" style={stagger(index)} className={`glass-card ${styles.card}`}>
       <div className={styles.head}>
         <span className="icon-bubble">
           <Icon name={group.icon} />

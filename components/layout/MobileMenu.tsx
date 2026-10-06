@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { BookButton } from "@/components/ui/BookButton";
 import { ExternalLink } from "@/components/ui/ExternalLink";
 import { Logo } from "@/components/ui/Logo";
 import { SECTIONS, type Dictionary } from "@/lib/i18n";
-import { BOOKING_HREF, CONTACT } from "@/lib/site";
+import { CONTACT } from "@/lib/site";
 import styles from "./MobileMenu.module.css";
 
 const DESKTOP_QUERY = "(min-width: 700px)";
@@ -57,9 +58,9 @@ export function MobileMenu({ t }: { t: Dictionary }) {
           ))}
         </nav>
         <div className={styles.foot}>
-          <ExternalLink href={BOOKING_HREF} className="btn btn-dark btn-xl">
+          <BookButton tone="dark" size="lg" block>
             {t.nav.cta}
-          </ExternalLink>
+          </BookButton>
           <div className={styles.contact}>
             <a href={CONTACT.phoneHref}>{CONTACT.phone}</a>
             <ExternalLink href={CONTACT.instagramHref}>{CONTACT.instagram}</ExternalLink>

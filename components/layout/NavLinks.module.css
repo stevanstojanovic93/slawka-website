@@ -11,7 +11,7 @@
   transition: transform 0.35s var(--ease);
 }
 .link[aria-current] .indicator { transform: scaleX(1); }
-.cta { margin-left: 8px; padding: 12px 22px; font-size: 15px; letter-spacing: 0.02em; }
+.cta { margin-left: 8px; letter-spacing: 0.02em; }
 
 @media (max-width: 699px) {
   .links { display: none; }

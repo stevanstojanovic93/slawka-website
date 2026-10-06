@@ -14,7 +14,7 @@ export function MapEmbed({ t }: { t: Dictionary["contact"] }) {
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <div className={styles.map}>
+    <div data-reveal="right" className={styles.map}>
       {loaded ? (
         <iframe
           title={t.mapTitle}
