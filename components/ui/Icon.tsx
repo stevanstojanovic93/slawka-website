@@ -71,6 +71,12 @@ const paths = {
       <path d="M4 21a8 8 0 0 1 16 0" />
     </>
   ),
+  arrowRight: (
+    <>
+      <path d="M4 12h16" />
+      <path d="m14 6 6 6-6 6" />
+    </>
+  ),
   arrowUpRight: (
     <>
       <path d="M7 17 17 7" />

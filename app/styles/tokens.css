@@ -22,7 +22,7 @@
   --inverse: var(--brown); /* filled buttons */
   --inverse-hover: var(--brown-dark);
   --on-inverse: var(--cream);
-  --header-bg: rgba(242, 233, 216, 0.9);
+  --header-bg: rgba(242, 233, 216, 0.6); /* translucent so the blur behind it shows */
   --glass: rgba(255, 255, 255, 0.55);
   --bubble: rgba(97, 101, 75, 0.18);
   --line: rgba(74, 53, 36, 0.14);
@@ -38,7 +38,8 @@
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
   --gutter: clamp(18px, 4vw, 28px);
   --max-width: 1240px;
-  --nav-height: 80px;
+  --nav-height: 88px; /* full header; anchors land below it */
+  --nav-height-compact: 54px; /* while scrolling down */
 
   /* Spacing that tightens on phones so text keeps a comfortable measure. */
   --section-y: clamp(56px, 10vw, 140px);

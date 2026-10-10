@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { BookButton } from "@/components/ui/BookButton";
 import type { Dictionary } from "@/lib/i18n";
-import { BRAND } from "@/lib/site";
 import heroImage from "@/public/images/hero.jpg";
 import styles from "./Hero.module.css";
 
@@ -23,9 +22,6 @@ export function Hero({ t }: { t: Dictionary }) {
       </div>
       <div className={styles.shade} />
       <div className={styles.copy}>
-        <p className="eyebrow">
-          {BRAND.tagline} · {BRAND.city}
-        </p>
         <h1 id="hero-title" className={styles.title}>
           {t.hero.title}
         </h1>

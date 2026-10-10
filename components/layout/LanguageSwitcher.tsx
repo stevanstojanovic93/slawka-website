@@ -2,17 +2,18 @@ import { Icon } from "@/components/ui/Icon";
 import { LOCALE_NAMES, LOCALES, localePath, type Lang } from "@/lib/i18n";
 import styles from "./LanguageSwitcher.module.css";
 
-const POPOVER_ID = "language-menu";
-
-/** Native popover: open/close, Escape and light-dismiss come from the browser, so no client JS is needed. */
-export function LanguageSwitcher({ lang, label }: { lang: Lang; label: string }) {
+/**
+ * Native popover: open/close, Escape and light-dismiss come from the browser, so no client JS is needed.
+ * Rendered in both the header and the mobile menu, so each instance needs its own `id`.
+ */
+export function LanguageSwitcher({ id, lang, label }: { id: string; lang: Lang; label: string }) {
   return (
     <div className={styles.wrap}>
-      <button type="button" className={styles.button} popoverTarget={POPOVER_ID} aria-label={label}>
+      <button type="button" className={styles.button} popoverTarget={id} aria-label={label}>
         <Icon name="globe" size={18} />
         <span aria-hidden="true">{lang.toUpperCase()}</span>
       </button>
-      <div id={POPOVER_ID} popover="auto" className={styles.menu}>
+      <div id={id} popover="auto" className={styles.menu}>
         <ul className={styles.list}>
           {LOCALES.map((code) => (
             <li key={code}>

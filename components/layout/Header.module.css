@@ -1,12 +1,36 @@
+/*
+ * The <header> keeps the full height in the page flow so content never jumps; only the bar
+ * inside shrinks. The leftover strip below a compact bar lets clicks through to the page.
+ */
 .header {
   position: sticky; top: 0; z-index: 10;
+  height: var(--nav-height);
+  pointer-events: none;
+}
+.bar {
+  height: var(--nav-height);
+  pointer-events: auto;
   background: var(--header-bg);
-  backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: saturate(180%) blur(20px); /* Lightning CSS adds the -webkit- prefix; writing both drops the rule */
   border-bottom: 1px solid var(--line);
+  transition: height 0.35s var(--ease), box-shadow 0.35s var(--ease);
 }
 .inner {
-  max-width: var(--max-width); margin: 0 auto; padding: 18px var(--gutter);
+  height: 100%;
+  max-width: var(--max-width); margin: 0 auto; padding: 0 var(--gutter);
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
 }
 .brand { display: block; }
 .right { display: flex; align-items: center; gap: 6px; }
+
+/* Compact: shorter bar (the logo shrinks itself, see Logo.module.css). */
+.header[data-compact] .bar { height: var(--nav-height-compact); box-shadow: 0 6px 24px rgba(50, 54, 40, 0.08); }
+
+@media (prefers-reduced-motion: reduce) {
+  .bar { transition: none; }
+}
+
+/* On small screens the language choice lives in the mobile menu instead. */
+@media (max-width: 959px) {
+  .desktopOnly { display: none; }
+}

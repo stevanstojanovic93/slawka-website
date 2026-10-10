@@ -34,7 +34,7 @@ export const BUSINESS = {
   prices: {
     single: 1800,
     eightSessions: 11000,
-    twelveSessions: 13500,
+    twelveSessions: 13000,
   },
   currency: "RSD",
 } as const;

@@ -13,7 +13,7 @@ import "../styles/utilities.css";
 // Downloaded at build time and served from this domain (no requests to Google at runtime).
 const serif = Cormorant_Garamond({
   subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
   variable: "--font-serif",
   display: "swap",

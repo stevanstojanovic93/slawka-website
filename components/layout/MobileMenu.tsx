@@ -3,9 +3,11 @@
 import { useEffect, useRef } from "react";
 import { BookButton } from "@/components/ui/BookButton";
 import { ExternalLink } from "@/components/ui/ExternalLink";
+import { Icon } from "@/components/ui/Icon";
 import { Logo } from "@/components/ui/Logo";
-import { SECTIONS, type Dictionary } from "@/lib/i18n";
+import { SECTIONS, type Dictionary, type Lang } from "@/lib/i18n";
 import { CONTACT } from "@/lib/site";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 import styles from "./MobileMenu.module.css";
 
 const DESKTOP_QUERY = "(min-width: 960px)";
@@ -28,7 +30,7 @@ function lockScroll(): () => void {
  * Full-screen mobile menu built on the native <dialog>: showModal() gives focus trapping,
  * Escape to close, an inert background and focus return to the burger for free.
  */
-export function MobileMenu({ t }: { t: Dictionary }) {
+export function MobileMenu({ lang, t }: { lang: Lang; t: Dictionary }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const unlockRef = useRef<(() => void) | null>(null);
 
@@ -81,17 +83,21 @@ export function MobileMenu({ t }: { t: Dictionary }) {
 
       <dialog ref={dialogRef} className={styles.dialog} aria-label={t.a11y.menu}>
         <div className={styles.head}>
-          <Logo />
+          <Logo tagline="Pilates & Movement" />
+          <div className={styles.langs}>
+            <LanguageSwitcher id="language-menu-mobile" lang={lang} label={t.a11y.chooseLanguage} />
+          </div>
           <button type="button" className={styles.close} onClick={close} aria-label={t.a11y.closeMenu}>
-            <span aria-hidden="true">×</span>
+            <span />
+            <span />
           </button>
         </div>
         <nav className={styles.links} aria-label={t.a11y.mainNav}>
           {SECTIONS.map((s) => (
             <a key={s.key} href={`#${s.id}`} onClick={close}>
               {t.nav[s.key]}
-              <span className={styles.arrow} aria-hidden="true">
-                →
+              <span className={styles.arrow}>
+                <Icon name="arrowRight" size={22} />
               </span>
             </a>
           ))}
